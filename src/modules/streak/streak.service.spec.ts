@@ -32,7 +32,11 @@ describe('StreakService', () => {
       { date: subtractDays(2), activities: 0, state: StreakState.SAVED },
       { date: subtractDays(3), activities: 1, state: StreakState.COMPLETED },
     ];
-    const expectedResult = { total: 4, days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))), activitiesToday: 3 };
+    const expectedResult = {
+      total: 4,
+      days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))),
+      activitiesToday: 3,
+    };
     expect(service.getStreakData(1)).toEqual(expectedResult);
   });
 
@@ -46,7 +50,11 @@ describe('StreakService', () => {
       { date: subtractDays(3), activities: 1, state: StreakState.COMPLETED },
       { date: subtractDays(4), activities: 1, state: StreakState.COMPLETED },
     ];
-    const expectedResult = { total: 2, days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))), activitiesToday: 1 };
+    const expectedResult = {
+      total: 2,
+      days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))),
+      activitiesToday: 1,
+    };
     expect(service.getStreakData(2)).toEqual(expectedResult);
   });
 
@@ -60,7 +68,11 @@ describe('StreakService', () => {
       { date: subtractDays(3), activities: 0, state: StreakState.AT_RISK },
       { date: subtractDays(4), activities: 1, state: StreakState.COMPLETED },
     ];
-    const expectedResult = { total: 2, days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))), activitiesToday: 0 };
+    const expectedResult = {
+      total: 2,
+      days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))),
+      activitiesToday: 0,
+    };
     expect(service.getStreakData(3)).toEqual(expectedResult);
   });
 

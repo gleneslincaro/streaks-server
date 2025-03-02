@@ -132,7 +132,6 @@ export class StreakService {
     let activitiesToday = 0;
     let recoveryDays = 0;
     let previousState = StreakState.INCOMPLETE;
-    let atRiskCount = 0; // Track the number of successive AT_RISK days
     const dateToday = moment().format('YYYY-MM-DD');
     streakData.days.forEach((day, index) => {
       const { activities } = day;
@@ -156,13 +155,11 @@ export class StreakService {
           }
 
           recoveryDays = 0; // Reset recovery days after completing a day
-          atRiskCount = 0; // Reset AT_RISK count after completing a day
         }
       }
 
       if (activities === 0 && day.date < dateToday) {
         recoveryDays++; // Increment recovery days after a completed streak
-        atRiskCount++; // Track successive AT_RISK days
         if (recoveryDays >= RECOVERY_DAYS_THRESHOLD) {
           // loop for setting incomplete state for previous recovery days
           for (let i = 1; i <= recoveryDays; i++) {
