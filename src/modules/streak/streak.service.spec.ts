@@ -45,13 +45,13 @@ describe('StreakService', () => {
       { date: addDays(2), activities: 0, state: StreakState.INCOMPLETE },
       { date: addDays(1), activities: 0, state: StreakState.INCOMPLETE },
       { date: currentDate, activities: 1, state: StreakState.INCOMPLETE },
-      { date: subtractDays(1), activities: 0, state: StreakState.AT_RISK },
+      { date: subtractDays(1), activities: 0, state: StreakState.SAVED },
       { date: subtractDays(2), activities: 0, state: StreakState.AT_RISK },
       { date: subtractDays(3), activities: 1, state: StreakState.COMPLETED },
       { date: subtractDays(4), activities: 1, state: StreakState.COMPLETED },
     ];
     const expectedResult = {
-      total: 2,
+      total: 1,
       days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))),
       activitiesToday: 1,
     };
@@ -65,11 +65,11 @@ describe('StreakService', () => {
       { date: currentDate, activities: 0, state: StreakState.INCOMPLETE },
       { date: subtractDays(1), activities: 2, state: StreakState.INCOMPLETE },
       { date: subtractDays(2), activities: 0, state: StreakState.SAVED },
-      { date: subtractDays(3), activities: 0, state: StreakState.AT_RISK },
+      { date: subtractDays(3), activities: 0, state: StreakState.SAVED },
       { date: subtractDays(4), activities: 1, state: StreakState.COMPLETED },
     ];
     const expectedResult = {
-      total: 2,
+      total: 0,
       days: streakData.sort((a, b) => moment(a.date).diff(moment(b.date))),
       activitiesToday: 0,
     };
